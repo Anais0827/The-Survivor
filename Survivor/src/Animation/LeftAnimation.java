@@ -1,8 +1,5 @@
 package Animation;
 
-import java.util.Set;
-
-import Character.BarObstacle;
 import Character.Survivor;
 import Control.Gamemanager;
 import javafx.animation.AnimationTimer;
@@ -17,12 +14,12 @@ public class LeftAnimation {
 	 * @param gamemanager game manager
 	 * @param obstacles the set of obstacles
 	 */
-	public LeftAnimation(Survivor survivor, Gamemanager gamemanager, Set<BarObstacle> obstacles){
-		Animation = createAnimation(survivor, gamemanager, obstacles);
+	public LeftAnimation(Survivor survivor, Gamemanager gamemanager){
+		Animation = createAnimation(survivor, gamemanager);
 	}
 	
 
-	private AnimationTimer createAnimation(Survivor survivor, Gamemanager gamemanager,Set<BarObstacle> obstacles) {
+	private AnimationTimer createAnimation(Survivor survivor, Gamemanager gamemanager) {
 		 double step = 5;
 		 
 		 return new AnimationTimer() {
@@ -31,6 +28,7 @@ public class LeftAnimation {
 	       		if(survivor.getX() - step > 0) {
 	       			survivor.setX(survivor.getX() - step);
 	       		}
+	       		gamemanager.CheckOut();
 	       	}
 	     };
 	}
